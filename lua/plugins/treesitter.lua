@@ -10,6 +10,8 @@ return {
             "bash",
             "html",
             "markdown",
+            "vim",
+            "vimdoc",
             "javascript",
             "css",
             "typescript",
@@ -24,14 +26,49 @@ return {
             "go",
             "gomod",
             "gowork",
-            "gosum"
+            "gosum",
+            "gotmpl"
         },
+        sync_install = false,
+        auto_install = true,
         highlight = {
             enable = true,
-            use_languagetree = true
+            additional_vim_regex_highlighting = false,
         },
         indent = {
             enable = true
-        }
-    }
+        },
+        incremental_selection = {
+            enable = true,
+            keymaps = {
+                init_selection = "<C-space>",
+                node_incremental = "<C-space>",
+                scope_incremental = "<C-s>",
+                node_decremental = "<bs>",
+            },
+        },
+    },
+    config = function(_, opts)
+        require("nvim-treesitter.configs").setup(opts)
+
+        vim.filetype.add({
+            extension = {
+                jsx = "javascriptreact",
+                tsx = "typescriptreact",
+            },
+            filename = {
+                ["*.jsx"] = "javascriptreact",
+                ["*.tsx"] = "typescriptreact",
+            },
+        })
+
+        vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+            pattern = { "*.tsx", "*.jsx" },
+            callback = function()
+                vim.cmd("TSBufEnable highlight")
+                vim.cmd("TSBufEnable indent")
+                vim.cmd("TSBufEnable incremental_selection")
+            end
+        })
+    end,
 }
