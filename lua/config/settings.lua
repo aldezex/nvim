@@ -20,11 +20,3 @@ vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')
 
 vim.g.mapleader = " "
-
--- AutoPrettier
---vim.cmd([[
---augroup AutoPrettier
---  autocmd!
---  autocmd BufWritePre *.ts,*.tsx,*.js,*.jsx,*.css,*.html,*.json :Prettier
---augroup END
---]])

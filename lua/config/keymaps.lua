@@ -30,4 +30,6 @@ map('n', '<leader>cp', ':let @*=expand("%:p")<CR>')
 map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
 map('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
 
-require('config/barbar-keymaps')
+-- Buffers
+map('n', '<leader>sa', ':bprevious<CR>')
+map('n', '<leader>sd', ':bnext<CR>')

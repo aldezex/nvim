@@ -20,7 +20,11 @@ return {
             "luap",
             "tsx",
             "vim",
-            "vimdoc"
+            "vimdoc",
+            "go",
+            "gomod",
+            "gowork",
+            "gosum"
         },
         highlight = {
             enable = true,
