@@ -9,7 +9,7 @@ return {
     ---@type blink.cmp.Config
     opts = {
         keymap = {
-            accept = '<C-CR>',
+            accept = '<Tab>'
         },
         highlight = {
             use_nvim_cmp_as_default = true,
