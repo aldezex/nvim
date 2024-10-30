@@ -27,7 +27,8 @@ return {
             "gomod",
             "gowork",
             "gosum",
-            "gotmpl"
+            "gotmpl",
+            "rust"
         },
         sync_install = false,
         auto_install = true,

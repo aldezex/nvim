@@ -70,6 +70,8 @@ return {
             }
         }
 
+        lspconfig.rust_analyzer.setup {}
+
         lspconfig.gopls.setup {
             cmd = { "gopls", "serve" },
             settings = {
