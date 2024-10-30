@@ -23,11 +23,6 @@ return {
             "tsx",
             "vim",
             "vimdoc",
-            "go",
-            "gomod",
-            "gowork",
-            "gosum",
-            "gotmpl",
             "rust"
         },
         sync_install = false,
