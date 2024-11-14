@@ -20,3 +20,5 @@ vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')
 
 vim.g.mapleader = " "
+
+vim.diagnostic.config({ virtual_text = false })
