@@ -1,10 +1,10 @@
 return {
-    'sainnhe/everforest',
-    name = 'colorscheme',
-    lazy = false,
-    priority = 1000,
+  {
+    dir = vim.fn.stdpath("config") .. "/colors",
+    name = "nanowise",
+    opts = {},
     config = function()
-        vim.g.everforest_enable_italic = true
-        vim.cmd.colorscheme('everforest')
-    end
+      vim.cmd.colorscheme("nanowise")
+    end,
+  }
 }
