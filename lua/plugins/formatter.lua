@@ -30,6 +30,7 @@ return {
                 javascriptreact = { "prettier" },
                 rust = { "rustfmt" },
                 haskell = { "ormolu" },
+                go = { "gofmt", "goimports" },
             },
             format_on_save = {
                 timeout_ms = 500,

@@ -7,7 +7,8 @@ return {
         inlay_hints = { enabled = true },
     },
     config = function()
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        local capabilities = require('blink.cmp').get_lsp_capabilities()
+        local lspconfig = require('lspconfig')
 
         capabilities.textDocument.completion.completionItem = {
             documentationFormat = { "markdown", "plaintext" },
@@ -27,9 +28,8 @@ return {
             }
         }
 
-        local lspconfig = require "lspconfig"
-
         lspconfig.lua_ls.setup {
+            capabilities = capabilities,
             filetypes = { "lua" },
             settings = {
                 Lua = {
@@ -53,6 +53,7 @@ return {
         }
 
         lspconfig.ts_ls.setup {
+            capabilities = capabilities,
             cmd = { "typescript-language-server", "--stdio" },
             filetypes = {
                 "javascript",
@@ -71,6 +72,47 @@ return {
                     completeFunctionCalls = true
                 }
             }
+        }
+
+        lspconfig.gopls.setup {
+            cmd = { "gopls", "serve" },
+            capabilities = capabilities,
+            settings = {
+                gopls = {
+                    gofumpt = true,
+                    codelenses = {
+                        gc_details = false,
+                        generate = true,
+                        regenerate_cgo = true,
+                        run_govulncheck = true,
+                        test = true,
+                        tidy = true,
+                        upgrade_dependency = true,
+                        vendor = true,
+                    },
+                    hints = {
+                        assignVariableTypes = true,
+                        compositeLiteralFields = true,
+                        compositeLiteralTypes = true,
+                        constantValues = true,
+                        functionTypeParameters = true,
+                        parameterNames = true,
+                        rangeVariableTypes = true,
+                    },
+                    analyses = {
+                        -- fieldalignment = true,
+                        nilness = true,
+                        unusedparams = true,
+                        unusedwrite = true,
+                        useany = true,
+                    },
+                    usePlaceholders = true,
+                    completeUnimported = true,
+                    staticcheck = true,
+                    directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+                    semanticTokens = true,
+                },
+            },
         }
     end
 }
