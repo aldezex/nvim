@@ -23,7 +23,9 @@ return {
             "tsx",
             "vim",
             "vimdoc",
-            "rust"
+            "rust",
+            "go",
+            "haskell",
         },
         sync_install = false,
         auto_install = true,
