@@ -114,5 +114,7 @@ return {
                 },
             },
         }
+
+        lspconfig.biome.setup {}
     end
 }

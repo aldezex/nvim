@@ -33,3 +33,11 @@ map('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
 -- Buffers
 map('n', '<leader>sa', ':bprevious<CR>')
 map('n', '<leader>sd', ':bnext<CR>')
+map('n', '<leader>q', ':cprev<CR>')
+map('n', '<leader>e', ':cnext<CR>')
+
+-- Folding
+map('n', '<S-a>', 'za')
+map('n', '<S-j>', 'zj')
+map('n', '<S-k>', 'zk')
+

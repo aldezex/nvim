@@ -16,6 +16,10 @@ opt.updatetime = 300
 opt.signcolumn = 'yes'
 opt.termguicolors = true
 
+opt.foldmethod = 'expr'
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
+opt.foldlevel = 20
+
 vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')
 
