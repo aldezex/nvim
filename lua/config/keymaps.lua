@@ -37,7 +37,7 @@ map('n', '<leader>q', ':cprev<CR>')
 map('n', '<leader>e', ':cnext<CR>')
 
 -- Folding
-map('n', '<S-a>', 'za')
-map('n', '<S-j>', 'zj')
-map('n', '<S-k>', 'zk')
+--map('n', '<S-a>', 'za')
+--map('n', '<S-j>', 'zj')
+--map('n', '<S-k>', 'zk')
 
