@@ -27,7 +27,7 @@ return {
             }
         }
 
-        vim.lsp.config('lua_ls', {
+        vim.lsp.enable('lua_ls', {
             capabilities = capabilities,
             filetypes = { "lua" },
             settings = {
@@ -51,7 +51,7 @@ return {
             }
         })
 
-        vim.lsp.config('ts_ls', {
+        vim.lsp.enable('ts_ls', {
             capabilities = capabilities,
             cmd = { "typescript-language-server", "--stdio" },
             filetypes = {
@@ -73,7 +73,7 @@ return {
             }
         })
 
-        vim.lsp.config('gopls', {
+        vim.lsp.enable('gopls', {
             cmd = { "gopls", "serve" },
             capabilities = capabilities,
             settings = {
@@ -114,16 +114,6 @@ return {
             },
         })
 
-        vim.lsp.config('biome', {
-            capabilities = capabilities,
-            filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-            settings = {
-                biome = {
-                    format = {
-                        enable = true,
-                    },
-                },
-            },
-        })
+        vim.lsp.enable('biome')
     end
 }
