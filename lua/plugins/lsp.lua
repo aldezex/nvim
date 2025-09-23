@@ -8,7 +8,6 @@ return {
     },
     config = function()
         local capabilities = require('blink.cmp').get_lsp_capabilities()
-        local lspconfig = require('lspconfig')
 
         capabilities.textDocument.completion.completionItem = {
             documentationFormat = { "markdown", "plaintext" },
@@ -28,7 +27,7 @@ return {
             }
         }
 
-        lspconfig.lua_ls.setup {
+        vim.lsp.config('lua_ls', {
             capabilities = capabilities,
             filetypes = { "lua" },
             settings = {
@@ -50,9 +49,9 @@ return {
                     }
                 }
             }
-        }
+        })
 
-        lspconfig.ts_ls.setup {
+        vim.lsp.config('ts_ls', {
             capabilities = capabilities,
             cmd = { "typescript-language-server", "--stdio" },
             filetypes = {
@@ -72,9 +71,9 @@ return {
                     completeFunctionCalls = true
                 }
             }
-        }
+        })
 
-        lspconfig.gopls.setup {
+        vim.lsp.config('gopls', {
             cmd = { "gopls", "serve" },
             capabilities = capabilities,
             settings = {
@@ -113,8 +112,18 @@ return {
                     semanticTokens = true,
                 },
             },
-        }
+        })
 
-        lspconfig.biome.setup {}
+        vim.lsp.config('biome', {
+            capabilities = capabilities,
+            filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+            settings = {
+                biome = {
+                    format = {
+                        enable = true,
+                    },
+                },
+            },
+        })
     end
 }
