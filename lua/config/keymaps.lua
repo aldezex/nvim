@@ -41,3 +41,31 @@ map('n', '<leader>e', ':cnext<CR>')
 --map('n', '<S-j>', 'zj')
 --map('n', '<S-k>', 'zk')
 
+-- TABS
+local opts = { noremap = true, silent = true }
+
+-- Goto buffer in position...
+map('n', '<leader>1', '<Cmd>BufferGoto 1<CR>', opts)
+map('n', '<leader>2', '<Cmd>BufferGoto 2<CR>', opts)
+map('n', '<leader>3', '<Cmd>BufferGoto 3<CR>', opts)
+map('n', '<leader>4', '<Cmd>BufferGoto 4<CR>', opts)
+map('n', '<leader>5', '<Cmd>BufferGoto 5<CR>', opts)
+map('n', '<leader>6', '<Cmd>BufferGoto 6<CR>', opts)
+map('n', '<leader>7', '<Cmd>BufferGoto 7<CR>', opts)
+map('n', '<leader>8', '<Cmd>BufferGoto 8<CR>', opts)
+map('n', '<leader>9', '<Cmd>BufferGoto 9<CR>', opts)
+map('n', '<leader>0', '<Cmd>BufferLast<CR>', opts)
+
+-- Close buffer
+map('n', '<leader>ct', '<Cmd>BufferClose<CR>', opts)
+
+-- Wipeout buffer
+--                 :BufferWipeout
+
+-- Close commands
+--                 :BufferCloseAllButCurrent
+--                 :BufferCloseAllButPinned
+--                 :BufferCloseAllButCurrentOrPinned
+--                 :BufferCloseBuffersLeft
+--                 :BufferCloseBuffersRight
+-- -- END TABS
