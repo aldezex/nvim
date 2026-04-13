@@ -26,6 +26,16 @@ map('n', '<leader>lc', 'guu')
 map('n', '<leader>gg', ':LazyGit<CR>')
 map('n', '<leader>cp', ':let @*=expand("%:p")<CR>')
 
+-- Window navigation (works across file tree, editor, and opencode terminal)
+map('n', '<C-h>', '<C-w>h')
+map('n', '<C-j>', '<C-w>j')
+map('n', '<C-k>', '<C-w>k')
+map('n', '<C-l>', '<C-w>l')
+vim.api.nvim_set_keymap('t', '<C-h>', [[<C-\><C-n><C-w>h]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<C-j>', [[<C-\><C-n><C-w>j]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<C-k>', [[<C-\><C-n><C-w>k]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<C-l>', [[<C-\><C-n><C-w>l]], { noremap = true, silent = true })
+
 -- LSP mappings
 map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
 map('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
