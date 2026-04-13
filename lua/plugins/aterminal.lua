@@ -2,7 +2,7 @@ return {
     'akinsho/toggleterm.nvim',
     version = "*",
     keys = {
-        { "<leader>tm", "<cmd>ToggleTerm Horizontal<cr>", desc = "Toggle Term Horizontal" },
+        { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
     },
     config = function()
         require('toggleterm').setup {
