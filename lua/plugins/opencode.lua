@@ -24,24 +24,41 @@ return {
         },
     },
     config = function()
+        local port = 41234
+
+        -- Kill any orphaned opencode process left on our port from a
+        -- previous Neovim session that didn't clean up properly.
+        local function kill_orphan_on_port()
+            local handle = io.popen("lsof -ti :" .. port .. " 2>/dev/null")
+            if handle then
+                local pids = handle:read("*a")
+                handle:close()
+                for pid in pids:gmatch("%S+") do
+                    os.execute("kill -TERM " .. pid .. " 2>/dev/null")
+                end
+            end
+        end
+
+        local cmd = "opencode --port " .. port
+        local win_opts = {
+            split = "right",
+            width = math.floor(vim.o.columns * 0.35),
+        }
+
         ---@type opencode.Opts
         vim.g.opencode_opts = {
             server = {
-                port = 41234,
+                port = port,
                 start = function()
-                    require("opencode.terminal").open("opencode --port 41234", {
-                        split = "right",
-                        width = math.floor(vim.o.columns * 0.35),
-                    })
+                    kill_orphan_on_port()
+                    require("opencode.terminal").open(cmd, win_opts)
                 end,
                 stop = function()
                     require("opencode.terminal").close()
                 end,
                 toggle = function()
-                    require("opencode.terminal").toggle("opencode --port 41234", {
-                        split = "right",
-                        width = math.floor(vim.o.columns * 0.35),
-                    })
+                    kill_orphan_on_port()
+                    require("opencode.terminal").toggle(cmd, win_opts)
                 end,
             },
         }
