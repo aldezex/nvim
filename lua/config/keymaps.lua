@@ -26,7 +26,7 @@ map('n', '<leader>lc', 'guu')
 map('n', '<leader>gg', ':LazyGit<CR>')
 map('n', '<leader>cp', ':let @*=expand("%:p")<CR>')
 
--- Window navigation (left/right between file tree, editor, and opencode terminal)
+-- Window navigation (left/right between file tree, editor, and Claude terminal)
 map('n', '<C-k>', '<C-w>h')
 map('n', '<C-l>', '<C-w>l')
 vim.api.nvim_set_keymap('t', '<C-k>', [[<C-\><C-n><C-w>h]], { noremap = true, silent = true })

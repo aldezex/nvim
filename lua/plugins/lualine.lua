@@ -8,10 +8,16 @@ return {
         sections = {
             lualine_y = {
                 {
-                    function() return require("opencode").statusline() end,
+                    function()
+                        if require("claudecode").is_claude_connected() then
+                            return "[Claude]"
+                        else
+                            return "[Claude: idle]"
+                        end
+                    end,
                     cond = function()
-                        local ok, status = pcall(require, "opencode.status")
-                        return ok and status.status ~= nil
+                        local ok, claude = pcall(require, "claudecode")
+                        return ok and claude.state and claude.state.initialized
                     end,
                 },
             },
