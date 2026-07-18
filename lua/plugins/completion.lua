@@ -34,7 +34,13 @@ return {
     },
 
     -- (Default) Only show the documentation popup when manually triggered
-    completion = { documentation = { auto_show = false } },
+    completion = {
+      documentation = { auto_show = false },
+      -- Default (100ms) is too short for rust-analyzer to resolve auto-import
+      -- text edits on freshly-added/indexing crates, so accepted items were
+      -- silently inserted without the `use` statement.
+      accept = { resolve_timeout_ms = 1000 },
+    },
 
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
