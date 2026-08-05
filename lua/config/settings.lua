@@ -1,3 +1,7 @@
+-- Must run before netrw loads; nvim-tree replaces it.
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local opt = vim.opt
 
 opt.scrolloff = 20
@@ -17,7 +21,10 @@ opt.signcolumn = 'yes'
 opt.termguicolors = true
 
 opt.foldmethod = 'expr'
-opt.foldexpr = 'nvim_treesitter#foldexpr()'
+-- nvim-treesitter v1.x (main branch) dropped autoload/, so nvim_treesitter#foldexpr()
+-- no longer exists. Folding is a native Neovim API now; it returns 0 for buffers
+-- without a parser instead of erroring.
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 opt.foldlevel = 20
 
 vim.cmd('syntax enable')
