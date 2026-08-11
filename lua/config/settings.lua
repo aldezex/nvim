@@ -1,3 +1,7 @@
+-- Must run before netrw loads; nvim-tree replaces it.
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local opt = vim.opt
 
 vim.g.mapleader = " "
@@ -33,8 +37,9 @@ opt.writebackup = false
 opt.undofile = true
 opt.undolevels = 10000
 
--- Treesitter folds. The native API does not depend on the plugin and is faster
--- than the old nvim_treesitter#foldexpr().
+-- nvim-treesitter v1.x (main branch) dropped autoload/, so nvim_treesitter#foldexpr()
+-- no longer exists. Folding is a native Neovim API now; it returns 0 for buffers
+-- without a parser instead of erroring.
 opt.foldmethod = 'expr'
 opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 opt.foldlevel = 20
