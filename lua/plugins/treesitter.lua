@@ -1,6 +1,9 @@
+-- Pinned to `master` on purpose: upstream froze that branch in favour of
+-- `main`, which has a different API (no nvim-treesitter.configs). With `branch`
+-- set explicitly, lazy cannot jump branches and break this without warning.
 return {
     "nvim-treesitter/nvim-treesitter",
-    name = "treesitter",
+    branch = "master",
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     event = { "VeryLazy" },
     build = ":TSUpdate",
@@ -49,24 +52,13 @@ return {
     config = function(_, opts)
         require("nvim-treesitter.configs").setup(opts)
 
+        -- `filename` matches exact names, so the "*.jsx" entries that used to
+        -- be here matched nothing; `extension` already does the job.
         vim.filetype.add({
             extension = {
                 jsx = "javascriptreact",
                 tsx = "typescriptreact",
             },
-            filename = {
-                ["*.jsx"] = "javascriptreact",
-                ["*.tsx"] = "typescriptreact",
-            },
-        })
-
-        vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-            pattern = { "*.tsx", "*.jsx" },
-            callback = function()
-                vim.cmd("TSBufEnable highlight")
-                vim.cmd("TSBufEnable indent")
-                vim.cmd("TSBufEnable incremental_selection")
-            end
         })
     end,
 }

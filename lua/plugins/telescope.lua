@@ -2,7 +2,6 @@ return {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
     cmd = "Telescope",
-    lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
         { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
@@ -13,7 +12,9 @@ return {
         defaults = {
             mappings = {
                 i = {
-                    ["<C-q>"] = function(...)
+                    -- Was <C-q>, but that is herdr's prefix and never made
+                    -- it this far.
+                    ["<C-s>"] = function(...)
                         local actions = require("telescope.actions")
                         actions.send_selected_to_qflist(...)
                         vim.cmd("copen")

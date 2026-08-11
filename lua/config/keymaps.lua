@@ -7,7 +7,7 @@ end
 -- General mappings
 map('n', '<leader>pv', ':Explore<CR>')
 map('n', '<leader><CR>', ':so ~/.config/nvim/init.lua<CR>')
-map('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
 
 -- Key remaps
 map('n', 'b', 'q')
@@ -23,7 +23,7 @@ map('n', '<leader>y', '"+y')
 map('v', '<leader>y', '"+y')
 map('n', '<leader>uc', 'gUU')
 map('n', '<leader>lc', 'guu')
-map('n', '<leader>gg', ':LazyGit<CR>')
+-- <leader>gg is declared by the lazygit.nvim spec, which also lazy-loads it.
 map('n', '<leader>cp', ':let @*=expand("%:p")<CR>')
 
 -- Window navigation (left/right between file tree, editor, and Claude terminal)
@@ -32,9 +32,9 @@ map('n', '<C-l>', '<C-w>l')
 vim.api.nvim_set_keymap('t', '<C-k>', [[<C-\><C-n><C-w>h]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('t', '<C-l>', [[<C-\><C-n><C-w>l]], { noremap = true, silent = true })
 
--- LSP mappings
-map('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
-map('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
+-- LSP. `K` (hover), `grn`, `gra`, `grr` and `gri` ship as defaults since 0.11,
+-- so only what is not mapped by default is left here.
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition' })
 
 -- Buffers
 map('n', '<leader>sa', ':bprevious<CR>')

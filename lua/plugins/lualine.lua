@@ -3,7 +3,9 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
         options = {
-            theme = 'everforest',
+            -- Was everforest, which had nothing to do with nanowise.
+            -- ayu_mirage is the one that matches the Ghostty theme.
+            theme = 'ayu_mirage',
         },
         sections = {
             lualine_y = {
